@@ -1,21 +1,12 @@
 import React, { Component } from 'react';
-import { Photos } from "./Photos";
+import Photos from "./Photos";
 
 class Auth extends Component {
     state = {
         id: null,
         username: '',
     };
-    render() {
-        const { username, id } = this.state;
-        return (
-            <React.Fragment>
-                {username.trim() ? <p>Добро пожаловать, {username}</p> : <p>Авторизуйтесь</p>}
-                {id !== null ? <button className="btn btn-primary float-right" onClick={this.handleLogout}>выйти</button> : null}
-                {username.trim() ? <Photos /> : <button className="btn btn-primary" onClick={this.handleLoginClick}>Войти</button>}
-            </React.Fragment>
-        );
-    }
+
     handleLoginClick = () => {
         //eslint-disable-next-line no-undef
         VK.Auth.login(this.authInfo,4)
@@ -30,7 +21,6 @@ class Auth extends Component {
         })
     };
 
-
     authInfo = (response) => {
         if (response.session) {
             this.setState({
@@ -41,6 +31,27 @@ class Auth extends Component {
             console.log('not auth');
         }
     }
+
+    render() {
+        const { username, id } = this.state;
+        return (
+            <React.Fragment>
+                {username.trim() ? <p>Добро пожаловать, {username}</p> : <p>Авторизуйтесь</p>}
+                {
+                    id && <button
+                            className="btn btn-primary float-right"
+                            onClick={this.handleLogout}>выйти
+                          </button>
+                }
+                {
+                    username.trim() ? <Photos /> : <button
+                                                    className="btn btn-primary"
+                                                    onClick={this.handleLoginClick}>Войти
+                                                    </button>
+                }
+            </React.Fragment>
+        );
+    }
 }
 
-export { Auth }
+export default Auth

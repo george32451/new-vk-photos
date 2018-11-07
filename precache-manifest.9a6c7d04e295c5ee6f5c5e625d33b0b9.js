@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/new-vk-photos/static/css/1.b4e2c2ea.chunk.css"
   },
   {
-    "revision": "8ebc257820460165681a27d3c36a5301",
+    "revision": "3b8971d680ce03c251faaaea15070a05",
     "url": "/new-vk-photos/index.html"
   }
 ];
